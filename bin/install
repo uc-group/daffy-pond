@@ -1,0 +1,16 @@
+#!/bin/bash
+
+cd "$(dirname "$0")/.."
+
+mkdir -p app
+git clone git@github.com:uc-group/daffy.git app
+
+docker-compose down
+docker-compose build
+docker-compose up -d
+
+sleep 1
+
+./bin/exec server "setfacl -dR -m u:www-data:rwX /var/www/daffy"
+./bin/exec server "setfacl -R -m u:www-data:rwX /var/www/daffy"
+

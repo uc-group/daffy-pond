@@ -2,6 +2,7 @@ version: '3.0'
 
 services:
     server:
+        container_name: daffy-server
         build:
             context: './server'
         working_dir: /var/www/daffy
@@ -14,6 +15,7 @@ services:
           - APACHE_RUN_USER=daffy
           - APACHE_RUN_GROUP=daffy
     assets:
+        container_name: daffy-assets
         image: 'node:8'
         working_dir: /usr/node/app
         user: node
