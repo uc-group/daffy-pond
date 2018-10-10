@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd "$(dirname "$0")/.."
+
+if [ -z "$2" ]; then
+    docker-compose exec "${1}" /bin/bash
+else
+    docker-compose exec "${1}" /bin/bash -c "$2" 
+fi
