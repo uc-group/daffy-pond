@@ -3,7 +3,7 @@
 cd "$(dirname "$0")/.."
 
 if [ -z "$2" ]; then
-    docker exec -ti "daffy-${1}" /bin/bash
+    docker-compose exec "${1}" /bin/bash
 else
-    docker exec -ti "daffy-${1}" /bin/bash -c "$2" 
+    docker-compose exec "${1}" /bin/bash -c "$2" 
 fi
