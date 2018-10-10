@@ -2,7 +2,6 @@
 
 cd "$(dirname "$0")/.."
 
-mkdir -p app
 git clone git@github.com:uc-group/daffy.git app
 
 docker-compose down
