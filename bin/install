@@ -12,4 +12,4 @@ sleep 1
 
 ./bin/exec server "setfacl -dR -m u:www-data:rwX /var/www/daffy"
 ./bin/exec server "setfacl -R -m u:www-data:rwX /var/www/daffy"
-
+./bin/exec server "composer install"
