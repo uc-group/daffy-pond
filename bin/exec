@@ -2,8 +2,19 @@
 
 cd "$(dirname "$0")/.."
 
-if [ -z "$2" ]; then
-    docker-compose exec "${1}" /bin/bash
-else
-    docker-compose exec "${1}" /bin/bash -c "$2" 
+declare -A containerUserMap
+containerUserMap[server]=daffy
+
+execCommand="docker-compose exec"
+
+if [[ -v "containerUserMap[${1}]" ]] ; then
+    execCommand="$execCommand -u ${containerUserMap[${1}]}"
 fi
+
+if [ -z "$2" ]; then
+    execCommand="$execCommand ${1} /bin/bash"
+else
+    execCommand="$execCommand ${1} /bin/bash -c '$2'"
+fi
+
+eval $execCommand
