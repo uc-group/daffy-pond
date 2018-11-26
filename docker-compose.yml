@@ -6,6 +6,7 @@ services:
             context: './server'
         working_dir: /var/www/daffy
         volumes:
+            - ./tmp/.composer:/home/daffy/.composer
             - ./app:/var/www/daffy
             - ./server/vhost.conf:/etc/apache2/sites-available/000-default.conf
             - ./server/php.ini:/usr/local/etc/php/php.ini
